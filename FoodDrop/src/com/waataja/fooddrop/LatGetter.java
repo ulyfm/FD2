@@ -8,6 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Jason
+ *
+ */
 public class LatGetter {
 	public static double[] getLatLong(String address) {
 		try {

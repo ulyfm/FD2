@@ -3,7 +3,11 @@ package com.waataja.fooddrop;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-
+/**
+ * 
+ * @author Jason
+ *
+ */
 public class Giveaway {
 	
 	private FoodDonator donator;

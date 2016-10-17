@@ -9,6 +9,11 @@ import com.waataja.fooddrop.FoodItem;
 import com.waataja.fooddrop.Giveaway;
 import com.waataja.fooddrop.Giveaway.GiveawayType;
 
+/**
+ * 
+ * @author Ulysses
+ *
+ */
 public class Test {
 	public static Giveaway getT(){
 		//BigData d = new BigData(new File("/Users/BigBear/Ulysses2/work/testfiles"));

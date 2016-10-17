@@ -8,6 +8,11 @@ import com.waataja.fooddrop.Giveaway;
 import us.noop.data.BigData;
 import us.noop.server.Page;
 
+/**
+ * 
+ * @author Ulysses
+ *
+ */
 public class GiveawayListPage implements Page {
 		
 	private BigData data;

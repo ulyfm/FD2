@@ -24,6 +24,11 @@ import com.waataja.fooddrop.Giveaway;
 import com.waataja.fooddrop.Giveaway.GiveawayType;
 import static java.lang.Math.toIntExact;
 
+/**
+ * 
+ * @author Ulysses
+ *
+ */
 public class BigData {
 	
 	private File dataDir;

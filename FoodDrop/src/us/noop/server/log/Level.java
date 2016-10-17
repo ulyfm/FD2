@@ -2,7 +2,7 @@ package us.noop.server.log;
 
 /**
  * An enum of the logging levels for the Logger class.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public enum Level {

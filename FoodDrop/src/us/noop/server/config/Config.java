@@ -6,6 +6,11 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Ulysses
+ *
+ */
 public class Config {
 	private File config;
 	private String[] defaultvals = {

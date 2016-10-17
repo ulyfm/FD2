@@ -14,7 +14,7 @@ import us.noop.server.pages.StaticFilePage;
 /**
  * The main class of each instance of the application.
  * The start method must be run to initialize the new instance.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class Main {

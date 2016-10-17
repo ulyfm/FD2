@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 /**
  * Logging methods
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class Logger {

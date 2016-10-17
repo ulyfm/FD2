@@ -16,7 +16,7 @@ import us.noop.data.Test;
 
 /**
  * A server that passes clients immediately on to Response Threads.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class Server implements Runnable {
@@ -73,6 +73,11 @@ public class Server implements Runnable {
 	public ResponseManager getResponseManager(){
 		return r;
 	}
+	
+	/**
+	 * Adds a page that responds to a particular URL.
+	 * @param p the page
+	 */
 	public void addPage(Page p){
 		r.addPage(p);
 	}

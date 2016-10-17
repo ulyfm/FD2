@@ -5,7 +5,7 @@ import us.noop.server.config.Vars;
 /**
  * Main class, in the future it could be necessary to run multiple instances of the server,
  * this allows that.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class Start {

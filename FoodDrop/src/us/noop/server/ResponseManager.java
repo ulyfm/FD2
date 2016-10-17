@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Also organizes responses based on pages.
  * 
  * Possibly a bad idea.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class ResponseManager {

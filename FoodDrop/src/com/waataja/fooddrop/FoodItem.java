@@ -1,5 +1,10 @@
 package com.waataja.fooddrop;
 
+/**
+ * 
+ * @author Jason
+ *
+ */
 public class FoodItem {
 	
 	private String name;

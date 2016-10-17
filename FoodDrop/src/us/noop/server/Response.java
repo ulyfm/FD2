@@ -9,7 +9,7 @@ import us.noop.server.log.*;
 /**
  * A response to a client. 
  * Reads request and responds appropriately, perhaps using another class to manage things.
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public class Response implements Runnable {

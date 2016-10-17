@@ -10,8 +10,9 @@ import us.noop.server.log.Level;
 
 /**
  * A page that is just a static file
- * @author ing_unfootemcnabb
- *
+ * @author Ulysses
+ * 
+ * TODO: Update to work with non-text files
  */
 public class StaticFilePage implements Page {
 	
@@ -42,16 +43,26 @@ public class StaticFilePage implements Page {
 		this.mimetype = mimetype;
 	}
 	
+	/**
+	 * Returns the static content.
+	 * @param input literally anything
+	 */
 	@Override
 	public String getResponse(String input) {
 		return response;
 	}
 	
+	/**
+	 * Returns the address argument it's supposed to respond to
+	 */
 	@Override
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * Returns the MIME-type of the content returned in <code>getResponse()</code>
+	 */
 	@Override
 	public String mimeType() {
 		return mimetype;

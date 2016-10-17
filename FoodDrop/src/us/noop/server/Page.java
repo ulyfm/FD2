@@ -2,7 +2,7 @@ package us.noop.server;
 
 /**
  * A class that responds to a request
- * @author ing_unfootemcnabb
+ * @author Ulysses
  *
  */
 public interface Page {
