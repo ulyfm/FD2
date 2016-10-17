@@ -8,11 +8,12 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import us.noop.fd.Start;
+import us.noop.fd.data.BigData;
+import us.noop.fd.data.Test;
+import us.noop.fd.pages.GiveawayListPage;
 import us.noop.server.log.*;
-import us.noop.server.pages.GiveawayListPage;
 import us.noop.server.pages.StaticFilePage;
-import us.noop.data.BigData;
-import us.noop.data.Test;
 
 /**
  * A server that passes clients immediately on to Response Threads.
@@ -41,11 +42,6 @@ public class Server implements Runnable {
 			System.exit(1);
 		}
 		r = new ResponseManager();
-		r.addPage(new StaticFilePage("/index.html", new File("web/index.html"), "text/html"));
-		r.addPage(new StaticFilePage("/", new File("web/index.html"), "text/html"));
-		r.addPage(new StaticFilePage("/fooddrop.js", new File("web/fooddrop.js"), "text/javascript"));
-		r.addPage(new StaticFilePage("/style.css", new File("web/style.css"), "text/css"));
-		r.addPage(new StaticFilePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
 		instance.getLogger().info("Server probably started successfully.");
 	}
 	

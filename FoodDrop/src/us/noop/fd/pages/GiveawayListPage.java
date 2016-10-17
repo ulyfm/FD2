@@ -1,11 +1,11 @@
-package us.noop.server.pages;
+package us.noop.fd.pages;
 
 import java.util.ArrayList;
 
 import com.waataja.fooddrop.FoodItem;
 import com.waataja.fooddrop.Giveaway;
 
-import us.noop.data.BigData;
+import us.noop.fd.data.BigData;
 import us.noop.server.Page;
 
 /**

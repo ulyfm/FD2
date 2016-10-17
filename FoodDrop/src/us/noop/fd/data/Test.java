@@ -1,4 +1,4 @@
-package us.noop.data;
+package us.noop.fd.data;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;

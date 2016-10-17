@@ -1,4 +1,4 @@
-package us.noop.data;
+package us.noop.fd.data;
 
 import java.io.File;
 import java.io.FileNotFoundException;
