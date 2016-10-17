@@ -24,7 +24,6 @@ public class Server implements Runnable {
 	private ServerSocket sock;
 	private Main instance;
 	private ResponseManager r;
-	private BigData d;
 	
 	/**
 	 * Constructor. Instantiates the server socket and response manager.
@@ -47,9 +46,6 @@ public class Server implements Runnable {
 		r.addPage(new StaticFilePage("/fooddrop.js", new File("web/fooddrop.js"), "text/javascript"));
 		r.addPage(new StaticFilePage("/style.css", new File("web/style.css"), "text/css"));
 		r.addPage(new StaticFilePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
-		d = new BigData(new File("files/"));
-		r.addPage(new GiveawayListPage(d));
-		d.getGiveaways().add(Test.getT());
 		instance.getLogger().info("Server probably started successfully.");
 	}
 	
@@ -76,5 +72,8 @@ public class Server implements Runnable {
 	 */
 	public ResponseManager getResponseManager(){
 		return r;
+	}
+	public void addPage(Page p){
+		r.addPage(p);
 	}
 }

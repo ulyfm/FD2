@@ -3,9 +3,13 @@ package us.noop.server;
 import java.io.File;
 import java.io.IOException;
 
+import us.noop.data.BigData;
+import us.noop.data.Test;
 import us.noop.server.config.Config;
 import us.noop.server.log.Level;
 import us.noop.server.log.Logger;
+import us.noop.server.pages.GiveawayListPage;
+import us.noop.server.pages.StaticFilePage;
 
 /**
  * The main class of each instance of the application.
@@ -37,8 +41,16 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Thread t = new Thread(s);
-		t.start();
+		s.addPage(new StaticFilePage("/index.html", new File("web/index.html"), "text/html"));
+		s.addPage(new StaticFilePage("/", new File("web/index.html"), "text/html"));
+		s.addPage(new StaticFilePage("/fooddrop.js", new File("web/fooddrop.js"), "text/javascript"));
+		s.addPage(new StaticFilePage("/style.css", new File("web/style.css"), "text/css"));
+		s.addPage(new StaticFilePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
+		BigData b = new BigData(new File("files/"));
+		b.getGiveaways().add(Test.getT());
+		s.addPage(new GiveawayListPage(b));
+		
+		s.run();
 	}
 	
 	/**
