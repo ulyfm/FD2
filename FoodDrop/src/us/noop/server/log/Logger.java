@@ -3,8 +3,6 @@ package us.noop.server.log;
 import java.io.PrintStream;
 import java.sql.Timestamp;
 
-import us.noop.server.config.Vars;
-
 /**
  * Logging methods
  * @author ing_unfootemcnabb
@@ -13,13 +11,14 @@ import us.noop.server.config.Vars;
 public class Logger {
 	
 	private PrintStream out;
-	
+	private Level minLevel;
 	/**
 	 * A util to print stuff into a PrintStream with labels and times.
 	 * @param out the printstream to print stuff to
 	 */
-	public Logger(PrintStream out){
+	public Logger(Level minLevel, PrintStream out){
 		this.out = out;
+		this.minLevel = minLevel;
 	}
 	
 	/**
@@ -36,7 +35,7 @@ public class Logger {
 	 * @param text text to log
 	 */
 	public void log(Level loglevel, String text){
-		if(loglevel.getLevel() >= Vars.MIN_LOG_LEVEL.getLevel())
+		if(loglevel.getLevel() >= minLevel.getLevel())
 			out.println(new Timestamp(System.currentTimeMillis()) + " [" + loglevel.getTag() + "] " + text);
 	}
 }

@@ -1,8 +1,10 @@
 package us.noop.server;
 
+import java.io.File;
 import java.io.IOException;
 
-import us.noop.server.config.Vars;
+import us.noop.server.config.Config;
+import us.noop.server.log.Level;
 import us.noop.server.log.Logger;
 
 /**
@@ -14,18 +16,21 @@ import us.noop.server.log.Logger;
 public class Main {
 	
 	private Logger log;
+	private Config conf;
 	private Server s;
 	
 	/**
 	 * Initializes server and all required other stuff, starts receiving connections
 	 */
 	public void start(){
-		log = new Logger(System.out);
-		log.info("Logger initialized with minimum level " + Vars.MIN_LOG_LEVEL);
-		log.info("Server starting on port " + Vars.PORT);
+		conf = new Config(new File("files"));
+		Level l = Level.getLevelByInt(conf.getInteger("MIN_LOG_LEVEL"));
+		log = new Logger(l, System.out);
+		log.info("Logger initialized with minimum level " + l);
+		log.info("Server starting on port " + conf.getInteger("PORT"));
 		
 		try {
-			s = new Server(this, Vars.PORT);
+			s = new Server(this, conf.getInteger("PORT"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -44,6 +49,9 @@ public class Main {
 		return log;
 	}
 	
+	public Config getConfig(){
+		return conf;
+	}
 	/**
 	 * The response manager of the active instance
 	 * @return the response manager

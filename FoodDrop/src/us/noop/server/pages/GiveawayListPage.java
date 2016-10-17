@@ -16,6 +16,7 @@ public class GiveawayListPage implements Page {
 		this.data = data;
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public String getResponse(String input) {
 		input = input.substring(input.indexOf("?") + 1);

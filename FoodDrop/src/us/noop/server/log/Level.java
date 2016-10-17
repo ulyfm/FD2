@@ -32,4 +32,11 @@ public enum Level {
 	public String getTag(){
 		return tag;
 	}
+	
+	public static Level getLevelByInt(int i){
+		for(Level l : Level.values()){
+			if(l.val == i) return l;
+		}
+		return null;
+	}
 }
