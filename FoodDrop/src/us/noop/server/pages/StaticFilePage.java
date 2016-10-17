@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import us.noop.fd.Start;
 import us.noop.server.Page;
+import us.noop.server.ResponseManager;
 import us.noop.server.log.Level;
 
 /**
@@ -34,7 +35,7 @@ public class StaticFilePage implements Page {
 				byte[] data = new byte[(int) f.length()];
 				fs.read(data);
 				fs.close();
-				response = new String(data, "UTF-8");
+				response = ResponseManager.generateHeader(200, "OK", new String(data, "UTF-8"), mimetype);
 			} catch (IOException e) {
 				Start.getInstance().getLogger().log(Level.HIGH, "Failed to read file for: " + f.getName() + ": \n" + e.getStackTrace());
 			}

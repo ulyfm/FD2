@@ -7,6 +7,7 @@ import com.waataja.fooddrop.Giveaway;
 
 import us.noop.fd.data.BigData;
 import us.noop.server.Page;
+import us.noop.server.ResponseManager;
 
 /**
  * 
@@ -43,7 +44,7 @@ public class GiveawayListPage implements Page {
 			rs.append("\"}");
 		}
 		rs.append("]}");
-		return rs.toString();
+		return ResponseManager.generateHeader(200, "OK", rs.toString(), "text/plain");
 	}
 
 	private String generateDesc(Giveaway g) {

@@ -46,7 +46,11 @@ public class ResponseManager {
 		String r = "";
 		if(currentR == null) r = "Invalid address.";//TODO add 404/500 page
 		else r = pages.get(currentR).getResponse(address);
-		return "HTTP/1.1 200 OK\r\nContent-Length: " + r.length() + "\r\nConnection: Closed\r\nContent-Type: " + pages.get(currentR).mimeType() + "\r\n\r\n" + r;
+		return r;
+	}
+	
+	public static String generateHeader(int code, String ctext, String content, String MIME){
+		return "HTTP/1.1 " + code + " " + ctext + "\r\nContent-Length: " + content.length() + "\r\nConnection: Closed\r\nContent-Type: " + MIME + "\r\n\r\n" + content;
 	}
 	
 	/**
