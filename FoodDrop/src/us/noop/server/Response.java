@@ -3,6 +3,7 @@ package us.noop.server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import us.noop.fd.Start;
 import us.noop.server.log.*;
@@ -16,18 +17,20 @@ import us.noop.server.log.*;
 public class Response implements Runnable {
 	
 	private PrintWriter out;
-	private BufferedReader in;
+	private Scanner in;
 	private int id;
-	
+	private String ip;
 	
 	/**
 	 * Constructor. Initializes with input and output.
 	 * @param out A writer to the client
 	 * @param in The client's shit
 	 */
-	public Response(PrintWriter out, BufferedReader in){
+	public Response(String ip, PrintWriter out, BufferedReader in){
 		this.out = out;
-		this.in = in;
+		this.in = new Scanner(in);
+		this.in.useDelimiter("\r\n\r\n");
+		this.ip = ip;
 		id = Start.getInstance().getResponseManager().nextId();
 	}
 	
@@ -36,19 +39,14 @@ public class Response implements Runnable {
 	 */
 	@Override
 	public void run() {
-		try {
-			String header = in.readLine();
-			Start.getInstance().getLogger().info("R:" + id + " responding to: " + header);
-			if(header == null) 
-				Start.getInstance().getLogger().log(Level.HIGH, "Malformed header.");
-			else
-				out.write(Start.getInstance().getResponseManager().getResponse(header.split(" ")[1]));
-			out.flush();
-			in.close();
-			out.close();
-			Start.getInstance().getLogger().info("R:" + id + " completed.");
-		} catch (IOException e) {
-			Start.getInstance().getLogger().log(Level.HIGH, "Couldn't read request: \n" + e.getStackTrace());
-		}
+		String header = in.next();
+		String[] fields = header.split("\r\n");
+		String body = fields[0].startsWith("GET") ? "" : in.next();
+		Start.getInstance().getLogger().info("R:" + id + " responding to: " + fields[0]);
+		out.write(Start.getInstance().getResponseManager().getResponse(new RequestData(ip, fields, body)));
+		out.flush();
+		in.close();
+		out.close();
+		Start.getInstance().getLogger().info("R:" + id + " completed.");
 	}
 }

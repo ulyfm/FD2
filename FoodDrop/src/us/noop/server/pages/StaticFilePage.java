@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import us.noop.fd.Start;
 import us.noop.server.Page;
+import us.noop.server.RequestData;
 import us.noop.server.ResponseManager;
 import us.noop.server.log.Level;
 
@@ -49,7 +50,7 @@ public class StaticFilePage implements Page {
 	 * @param input literally anything
 	 */
 	@Override
-	public String getResponse(String input) {
+	public String getResponse(RequestData req) {
 		return response;
 	}
 	

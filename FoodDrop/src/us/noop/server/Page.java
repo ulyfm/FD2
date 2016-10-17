@@ -12,7 +12,7 @@ public interface Page {
 	 * @param input the input, just an address with GET, HTTP/1.1, etc. removed.
 	 * @return an appropriate response
 	 */
-	public String getResponse(String input);
+	public String getResponse(RequestData req);
 	
 	/**
 	 * The address that will be responded to.

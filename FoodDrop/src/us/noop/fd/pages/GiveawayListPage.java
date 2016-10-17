@@ -7,6 +7,7 @@ import com.waataja.fooddrop.Giveaway;
 
 import us.noop.fd.data.BigData;
 import us.noop.server.Page;
+import us.noop.server.RequestData;
 import us.noop.server.ResponseManager;
 
 /**
@@ -24,7 +25,8 @@ public class GiveawayListPage implements Page {
 	
 	@SuppressWarnings("unused")
 	@Override
-	public String getResponse(String input) {
+	public String getResponse(RequestData req) {
+		String input = req.getAddress();
 		input = input.substring(input.indexOf("?") + 1);
 		String[] spl = input.split("&");
 		int type = Integer.parseInt(spl[0]);

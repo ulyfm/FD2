@@ -53,7 +53,7 @@ public class Server implements Runnable {
 			instance.getLogger().info("Awaiting connection...");
 			try {
 				Socket client = sock.accept();
-				Thread t = new Thread(new Response(new PrintWriter(client.getOutputStream(), true), new BufferedReader(new InputStreamReader(client.getInputStream()))));
+				Thread t = new Thread(new Response(client.getInetAddress().getHostAddress(), new PrintWriter(client.getOutputStream(), true), new BufferedReader(new InputStreamReader(client.getInputStream()))));
 				t.start();
 				r.register(t);
 			} catch (IOException e) {

@@ -28,15 +28,14 @@ public class ResponseManager {
 	/**
 	 * Returns an appropriate response to the address.
 	 * Pages are registered in Server
-	 * @param address the address passed by the client
+	 * @param requestData the address passed by the client
 	 * @return a page
 	 */
-	public String getResponse(String address){
-		address = address.trim();
+	public String getResponse(RequestData requestData){
 		int i = 0;
 		String currentR = null;
 		for(String s : pages.keySet()){
-			if(address.startsWith(s)){
+			if(requestData.getAddress().startsWith(s)){
 				if(s.split("/").length >= i){
 					i = s.split("/").length;
 					currentR = s;
@@ -45,7 +44,7 @@ public class ResponseManager {
 		}
 		String r = "";
 		if(currentR == null) r = "Invalid address.";//TODO add 404/500 page
-		else r = pages.get(currentR).getResponse(address);
+		else r = pages.get(currentR).getResponse(requestData);
 		return r;
 	}
 	
