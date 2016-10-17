@@ -40,7 +40,7 @@ public class Response implements Runnable {
 	@Override
 	public void run() {
 		String header = in.next();
-		String[] fields = header.split("\r\n");
+		String[] fields = header.split("\r\n");//TODO make it not dependent on GET/POST, accept others as well.
 		String body = fields[0].startsWith("GET") ? "" : in.next();
 		Start.getInstance().getLogger().info("R:" + id + " responding to: " + fields[0]);
 		out.write(Start.getInstance().getResponseManager().getResponse(new RequestData(ip, fields, body)));
