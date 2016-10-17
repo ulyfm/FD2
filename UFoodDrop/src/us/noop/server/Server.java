@@ -39,6 +39,7 @@ public class Server implements Runnable {
 			sock = new ServerSocket(port);
 		} catch (IOException e) {
 			instance.getLogger().log(Level.HIGH, "Failed to create port: \n" + e.getStackTrace());
+			System.exit(1);
 		}
 		r = new ResponseManager();
 		r.addPage(new StaticFilePage("/index.html", new File("web/index.html"), "text/html"));
@@ -57,7 +58,7 @@ public class Server implements Runnable {
 	 */
 	public void run() {
 		while(true){
-			System.out.println("Awaiting connection...");
+			instance.getLogger().info("Awaiting connection...");
 			try {
 				Socket client = sock.accept();
 				Thread t = new Thread(new Response(new PrintWriter(client.getOutputStream(), true), new BufferedReader(new InputStreamReader(client.getInputStream()))));

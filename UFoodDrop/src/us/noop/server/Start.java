@@ -17,7 +17,7 @@ public class Start {
 	 * @param args command-line arguments (none yet, but possible port or logging options in the future)
 	 */
 	public static void main(String... args){
-		System.out.println("Hiking app backend version " + Vars.VERSION);
+		System.out.println("UlyServer version " + Vars.VERSION);
 		instance = new Main();
 		instance.start();
 	}

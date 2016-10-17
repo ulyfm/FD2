@@ -48,7 +48,6 @@ public class BigData {
 		try{
 			ArrayList<Giveaway> gs = new ArrayList<Giveaway>();
 			File s = new File(dataDir, "save");
-			System.out.println(s.getAbsolutePath());
 			donators = new HashMap<Integer, ArrayList<FoodDonator>>();
 			if(!s.exists()){
 				giveaways = gs;
