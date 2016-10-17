@@ -36,6 +36,6 @@ public class Logger {
 	 */
 	public void log(Level loglevel, String text){
 		if(loglevel.getLevel() >= minLevel.getLevel())
-			out.println(new Timestamp(System.currentTimeMillis()) + " [" + loglevel.getTag() + "] " + text);
+			out.println(new Timestamp(System.currentTimeMillis()) + "\t[" + loglevel.getTag() + "] " + text);
 	}
 }
