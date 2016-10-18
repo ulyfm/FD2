@@ -10,6 +10,11 @@ public class RequestData {
 	private HashMap<String, String> fields;
 	
 	public RequestData(String ip, String[] header, String data){
+		this(ip, header);
+		setData(data);
+	}
+	
+	public RequestData(String ip, String[] header){
 		String[] spl = header[0].split(" ");
 		reqtype = spl[0];
 		address = spl[1];
@@ -19,6 +24,14 @@ public class RequestData {
 			String[] f = header[i].split(": ");
 			fields.put(f[0], f[1]);
 		}
+	}
+	
+	public String getValue(String key){
+		return fields.get(key);
+	}
+	
+	public void setData(String data){
+		
 	}
 	
 	public String getAddress(){

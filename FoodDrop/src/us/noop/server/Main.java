@@ -3,13 +3,9 @@ package us.noop.server;
 import java.io.File;
 import java.io.IOException;
 
-import us.noop.fd.data.BigData;
-import us.noop.fd.data.Test;
-import us.noop.fd.pages.GiveawayListPage;
 import us.noop.server.config.Config;
 import us.noop.server.log.Level;
 import us.noop.server.log.Logger;
-import us.noop.server.pages.StaticFilePage;
 
 /**
  * The main class of each instance of the application.

@@ -1,12 +1,10 @@
 package us.noop.server;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 import us.noop.fd.Start;
-import us.noop.server.log.*;
 
 /**
  * A response to a client. 
@@ -40,10 +38,13 @@ public class Response implements Runnable {
 	@Override
 	public void run() {
 		String header = in.next();
-		String[] fields = header.split("\r\n");//TODO make it not dependent on GET/POST, accept others as well.
-		String body = fields[0].startsWith("GET") ? "" : in.next();
+		String[] fields = header.split("\r\n");
+		RequestData get = new RequestData(ip, fields);
+		String val = get.getValue("Content-Length");
+		String body = val == null || val.equals("0") ? "" : in.next();
+		get.setData(body);
 		Start.getInstance().getLogger().info("R:" + id + " responding to: " + fields[0]);
-		out.write(Start.getInstance().getResponseManager().getResponse(new RequestData(ip, fields, body)));
+		out.write(Start.getInstance().getResponseManager().getResponse(get));
 		out.flush();
 		in.close();
 		out.close();

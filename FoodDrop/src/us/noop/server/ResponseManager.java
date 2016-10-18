@@ -13,14 +13,25 @@ import java.util.HashMap;
  */
 public class ResponseManager {
 	
-	private ArrayList<Thread> responses = new ArrayList<Thread>();
+	private ArrayList<ResponseThread> availableThreads = new ArrayList<ResponseThread>();
 	
-	/**
-	 * Adds a Response thread to monitor.
-	 * @param t the thread
-	 */
-	public void register(Thread t){
-		responses.add(t);
+	public void cleanResponders(){
+		for(int i = 0; i < availableThreads.size(); ++i){
+			ResponseThread rt = availableThreads.get(i);
+			if(System.currentTimeMillis() - rt.getLastTime() > 10000l){
+				rt.setDestroy(true);
+				availableThreads.remove(rt);
+			}
+		}
+	}
+	
+	public void addResponse(Response r){
+		if(availableThreads.size() > 0){
+			availableThreads.remove(availableThreads.size() - 1).setResponse(r);
+		}else{
+			ResponseThread ct = new ResponseThread(this, r);
+			ct.start();
+		}
 	}
 	
 	private HashMap<String, Page> pages = new HashMap<String, Page>();
@@ -70,5 +81,9 @@ public class ResponseManager {
 		id++;
 		return id - 1;
 		
+	}
+
+	public synchronized void renewResponse(ResponseThread responseThread) {
+		availableThreads.add(responseThread);
 	}
 }
