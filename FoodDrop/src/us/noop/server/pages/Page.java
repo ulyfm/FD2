@@ -1,4 +1,6 @@
-package us.noop.server;
+package us.noop.server.pages;
+
+import us.noop.server.RequestData;
 
 /**
  * A class that responds to a request
@@ -12,7 +14,7 @@ public interface Page {
 	 * @param input the input, just an address with GET, HTTP/1.1, etc. removed.
 	 * @return an appropriate response
 	 */
-	public String getResponse(RequestData req);
+	public byte[] getResponse(RequestData req);
 	
 	/**
 	 * The address that will be responded to.

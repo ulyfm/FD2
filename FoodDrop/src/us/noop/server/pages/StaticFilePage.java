@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import us.noop.fd.Start;
-import us.noop.server.Page;
 import us.noop.server.RequestData;
 import us.noop.server.ResponseManager;
 import us.noop.server.log.Level;
@@ -18,9 +17,9 @@ import us.noop.server.log.Level;
  */
 public class StaticFilePage implements Page {
 	
-	private String response;
+	protected byte[] response;
 	private String address;
-	private String mimetype;
+	protected String mimetype;
 	
 	/**
 	 * Constructor. A page that responds to the selected address with a static cached file.
@@ -35,8 +34,8 @@ public class StaticFilePage implements Page {
 				FileInputStream fs = new FileInputStream(f);
 				byte[] data = new byte[(int) f.length()];
 				fs.read(data);
+				response = data;
 				fs.close();
-				response = ResponseManager.generateHeader(200, "OK", new String(data, "UTF-8"), mimetype);
 			} catch (IOException e) {
 				Start.getInstance().getLogger().log(Level.HIGH, "Failed to read file for: " + f.getName() + ": \n" + e.getStackTrace());
 			}
@@ -50,7 +49,7 @@ public class StaticFilePage implements Page {
 	 * @param input literally anything
 	 */
 	@Override
-	public String getResponse(RequestData req) {
+	public byte[] getResponse(RequestData req) {
 		return response;
 	}
 	

@@ -6,9 +6,9 @@ import com.waataja.fooddrop.FoodItem;
 import com.waataja.fooddrop.Giveaway;
 
 import us.noop.fd.data.BigData;
-import us.noop.server.Page;
 import us.noop.server.RequestData;
 import us.noop.server.ResponseManager;
+import us.noop.server.pages.Page;
 
 /**
  * 
@@ -25,7 +25,7 @@ public class GiveawayListPage implements Page {
 	
 	@SuppressWarnings("unused")
 	@Override
-	public String getResponse(RequestData req) {
+	public byte[] getResponse(RequestData req) {
 		String input = req.getAddress();
 		input = input.substring(input.indexOf("?") + 1);
 		String[] spl = input.split("&");
@@ -46,7 +46,7 @@ public class GiveawayListPage implements Page {
 			rs.append("\"}");
 		}
 		rs.append("]}");
-		return ResponseManager.generateHeader(200, "OK", rs.toString(), "text/plain");
+		return ResponseManager.generateHeader(200, "OK", rs.toString(), "text/plain").getBytes();
 	}
 
 	private String generateDesc(Giveaway g) {

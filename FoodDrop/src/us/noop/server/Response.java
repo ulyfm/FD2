@@ -1,10 +1,11 @@
 package us.noop.server;
 
 import java.io.BufferedReader;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.util.Scanner;
 
 import us.noop.fd.Start;
+import us.noop.server.log.Level;
 
 /**
  * A response to a client. 
@@ -14,7 +15,7 @@ import us.noop.fd.Start;
  */
 public class Response implements Runnable {
 	
-	private PrintWriter out;
+	private OutputStream out;
 	private Scanner in;
 	private int id;
 	private String ip;
@@ -24,7 +25,7 @@ public class Response implements Runnable {
 	 * @param out A writer to the client
 	 * @param in The client's shit
 	 */
-	public Response(String ip, PrintWriter out, BufferedReader in){
+	public Response(String ip, OutputStream out, BufferedReader in){
 		this.out = out;
 		this.in = new Scanner(in);
 		this.in.useDelimiter("\r\n\r\n");
@@ -37,17 +38,21 @@ public class Response implements Runnable {
 	 */
 	@Override
 	public void run() {
-		String header = in.next();
-		String[] fields = header.split("\r\n");
-		RequestData get = new RequestData(ip, fields);
-		String val = get.getValue("Content-Length");
-		String body = val == null || val.equals("0") ? "" : in.next();
-		get.setData(body);
-		Start.getInstance().getLogger().info("R:" + id + " responding to: " + fields[0]);
-		out.write(Start.getInstance().getResponseManager().getResponse(get));
-		out.flush();
-		in.close();
-		out.close();
-		Start.getInstance().getLogger().info("R:" + id + " completed.");
+		try{
+			String header = in.next();
+			String[] fields = header.split("\r\n");
+			RequestData get = new RequestData(ip, fields);
+			String val = get.getValue("Content-Length");
+			String body = val == null || val.equals("0") ? "" : in.next();
+			get.setData(body);
+			Start.getInstance().getLogger().info("R:" + id + " responding to: " + fields[0]);
+			out.write(Start.getInstance().getResponseManager().getResponse(get));
+			out.flush();
+			in.close();
+			out.close();
+			Start.getInstance().getLogger().info("R:" + id + " completed.");
+		}catch(Exception e){
+			Start.getInstance().getLogger().log(Level.HIGH, "Error in response id " + id);
+		}
 	}
 }

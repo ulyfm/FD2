@@ -3,12 +3,12 @@ package us.noop.server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import us.noop.fd.Start;
 import us.noop.server.log.*;
+import us.noop.server.pages.Page;
 
 /**
  * A server that passes clients immediately on to Response Threads.
@@ -50,7 +50,7 @@ public class Server implements Runnable {
 			instance.getLogger().info("Awaiting connection...");
 			try {
 				Socket client = sock.accept();
-				r.addResponse(new Response(client.getInetAddress().getHostAddress(), new PrintWriter(client.getOutputStream(), true), new BufferedReader(new InputStreamReader(client.getInputStream()))));
+				r.addResponse(new Response(client.getInetAddress().getHostAddress(), client.getOutputStream(), new BufferedReader(new InputStreamReader(client.getInputStream()))));
 				if(ct >= 10){
 					r.cleanResponders();
 					ct = 0;
