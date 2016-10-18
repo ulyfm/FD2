@@ -12,12 +12,16 @@ import java.util.Scanner;
  *
  */
 public class Config {
+	
 	private File config;
+	
 	private String[] defaultvals = {
 			"PORT 80",
 			"MIN_LOG_LEVEL 0"
 	};
+	
 	private HashMap<String, String> confmap = new HashMap<String, String>();
+	
 	public Config(File dataDir){
 		if(dataDir == null || (dataDir.exists() && !dataDir.isDirectory())) throw new IllegalArgumentException();
 		if(!dataDir.exists()) dataDir.mkdir();
@@ -32,6 +36,7 @@ public class Config {
 		config = c;
 		loadConfig();
 	}
+	
 	private void initializeNewFile(File c) throws IOException {
 		c.createNewFile();
 		PrintStream ps = new PrintStream(c);
@@ -40,9 +45,11 @@ public class Config {
 		}
 		ps.close();
 	}
+	
 	public String getString(String key){
 		return confmap.get(key);
 	}
+	
 	public double getDouble(String key){
 		try{
 			double d = Double.parseDouble(getString(key));
@@ -51,6 +58,7 @@ public class Config {
 			throw new IllegalArgumentException();
 		}
 	}
+	
 	public int getInteger(String key){
 		try{
 			int i = Integer.parseInt(getString(key));
@@ -59,6 +67,7 @@ public class Config {
 			throw new IllegalArgumentException();
 		}
 	}
+	
 	public void loadConfig(){
 		try{
 			Scanner sc = new Scanner(config);
