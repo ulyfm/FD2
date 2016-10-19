@@ -6,6 +6,7 @@ import java.io.IOException;
 import us.noop.server.config.Config;
 import us.noop.server.log.Level;
 import us.noop.server.log.Logger;
+import us.noop.server.response.ResponseManager;
 
 /**
  * The main class of each instance of the application.

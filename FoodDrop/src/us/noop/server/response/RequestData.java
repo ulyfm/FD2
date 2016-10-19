@@ -1,4 +1,4 @@
-package us.noop.server;
+package us.noop.server.response;
 
 import java.util.HashMap;
 

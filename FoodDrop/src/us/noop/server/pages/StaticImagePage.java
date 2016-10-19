@@ -2,7 +2,7 @@ package us.noop.server.pages;
 
 import java.io.File;
 
-import us.noop.server.RequestData;
+import us.noop.server.response.RequestData;
 
 public class StaticImagePage extends StaticFilePage {
 	public StaticImagePage(String address, File f, String mimetype) {

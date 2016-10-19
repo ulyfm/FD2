@@ -25,7 +25,7 @@ public class Config {
 	public Config(File dataDir){
 		if(dataDir == null || (dataDir.exists() && !dataDir.isDirectory())) throw new IllegalArgumentException();
 		if(!dataDir.exists()) dataDir.mkdir();
-		File c = new File("config.cfg");
+		File c = new File(dataDir, "config.cfg");
 		if(!c.exists()){
 			try {
 				initializeNewFile(c);

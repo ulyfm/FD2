@@ -26,6 +26,7 @@ public class FoodDropServerSetup implements ServerSetup {
 		s.addPage(new StaticImagePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
 		BigData b = new BigData(new File("files/"));
 		b.getGiveaways().add(Test.getT());
+		b.saveGiveaways();
 		s.addPage(new GiveawayListPage(b));
 	}
 

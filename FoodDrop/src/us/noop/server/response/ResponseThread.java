@@ -1,4 +1,4 @@
-package us.noop.server;
+package us.noop.server.response;
 
 public class ResponseThread extends Thread {
 	private long lastResponse = Long.MAX_VALUE;

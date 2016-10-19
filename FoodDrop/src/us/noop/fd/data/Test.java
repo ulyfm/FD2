@@ -16,8 +16,6 @@ import com.waataja.fooddrop.Giveaway.GiveawayType;
  */
 public class Test {
 	public static Giveaway getT(){
-		//BigData d = new BigData(new File("/Users/BigBear/Ulysses2/work/testfiles"));
-		//System.out.println(d.getGiveaways().size());
 		FoodItem bread = new FoodItem("Bread", "some yummy bread", 12);
 		FoodItem soup = new FoodItem("Soup", "delicious canned soup", 4);
 		FoodItem grain = new FoodItem("Grain", "ergot-free rye", 70);
@@ -31,5 +29,12 @@ public class Test {
 		Giveaway ng = new Giveaway(pcc, start, end, GiveawayType.PEOPLE, "availability");
 		ng.setItems(fl);
 		return ng;
+	}
+	public static void main(String... args){
+		/*Database d = new Database("files/test.db", "fdgdata", 
+				"(ID INT PRIMARY KEY NOT NULL," +
+				" NAME TEXT NOT NULL," +
+				" ");*/
+		
 	}
 }

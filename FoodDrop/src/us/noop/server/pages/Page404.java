@@ -1,7 +1,7 @@
 package us.noop.server.pages;
 
-import us.noop.server.RequestData;
-import us.noop.server.ResponseManager;
+import us.noop.server.response.RequestData;
+import us.noop.server.response.ResponseManager;
 
 public class Page404 implements Page {
 

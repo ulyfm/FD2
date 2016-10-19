@@ -1,6 +1,6 @@
 package us.noop.server.pages;
 
-import us.noop.server.RequestData;
+import us.noop.server.response.RequestData;
 
 /**
  * A class that responds to a request

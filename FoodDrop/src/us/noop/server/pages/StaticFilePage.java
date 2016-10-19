@@ -5,9 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import us.noop.fd.Start;
-import us.noop.server.RequestData;
-import us.noop.server.ResponseManager;
 import us.noop.server.log.Level;
+import us.noop.server.response.RequestData;
 
 /**
  * A page that is just a static file

@@ -6,9 +6,9 @@ import com.waataja.fooddrop.FoodItem;
 import com.waataja.fooddrop.Giveaway;
 
 import us.noop.fd.data.BigData;
-import us.noop.server.RequestData;
-import us.noop.server.ResponseManager;
 import us.noop.server.pages.Page;
+import us.noop.server.response.RequestData;
+import us.noop.server.response.ResponseManager;
 
 /**
  * 
