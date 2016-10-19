@@ -3,7 +3,6 @@ package us.noop.fd;
 import java.io.File;
 
 import us.noop.fd.data.BigData;
-import us.noop.fd.data.Test;
 import us.noop.fd.pages.GiveawayListPage;
 import us.noop.server.Server;
 import us.noop.server.ServerSetup;
