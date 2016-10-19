@@ -42,7 +42,31 @@ public class Database {
 		return null;
 	}
 	
+	public void insert(String tname, String cmd){
+		try{
+			stat.executeUpdate("INSERT INTO " + tname + " " + cmd);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
 	public Statement getStatement(){
 		return stat;
+	}
+	
+	public void update(String table, String cmd){
+		try{
+			stat.executeUpdate("UPDATE " + table + " set " + cmd);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(String table, String cmd){
+		try{
+			stat.executeUpdate("DELETE from " + table + " " + cmd);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 }

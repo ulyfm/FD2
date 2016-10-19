@@ -11,12 +11,16 @@ import us.noop.server.pages.StaticFilePage;
 import us.noop.server.pages.StaticImagePage;
 
 /**
- * 
+ * This sets up the FoodDrop server configuration with the (intended to be universal) server class.
  * @author Ulysses
  *
  */
 public class FoodDropServerSetup implements ServerSetup {
 
+	/**
+	 * Sets up the server with the required FoodDrop pages.
+	 * @param s the server object
+	 */
 	@Override
 	public void setUpServer(Server s) {
 		s.addPage(new StaticFilePage("/index.html", new File("web/index.html"), "text/html"));
@@ -25,8 +29,9 @@ public class FoodDropServerSetup implements ServerSetup {
 		s.addPage(new StaticFilePage("/style.css", new File("web/style.css"), "text/css"));
 		s.addPage(new StaticImagePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
 		BigData b = new BigData(new File("files/"));
+		
 		b.getGiveaways().add(Test.getT());
-		b.saveGiveaways();
+		
 		s.addPage(new GiveawayListPage(b));
 	}
 
