@@ -119,8 +119,8 @@ public class BigData {
 		String name = (String) donator.get("name");
 		String address = (String) donator.get("address");
 		String desc = (String) donator.get("desc");
-		double lat = Double.parseDouble((String) donator.get("lat"));
-		double lng = Double.parseDouble((String) donator.get("lng"));
+		double lat = (Double) donator.get("lat");
+		double lng = (Double) donator.get("lon");
 		int hash = (name + address + desc).hashCode();
 		FoodDonator ff = new FoodDonator(name, address, desc, lat, lng);
 		if(donators.keySet().contains(hash)){
