@@ -7,6 +7,7 @@ public class RequestData {
 	private String reqtype;
 	private String address;
 	private String httpver;
+	private String data;
 	private HashMap<String, String> fields;
 	
 	public RequestData(String ip, String[] header, String data){
@@ -31,7 +32,11 @@ public class RequestData {
 	}
 	
 	public void setData(String data){
-		
+		this.data = data;
+	}
+	
+	public String getData(){
+		return data;
 	}
 	
 	public String getAddress(){

@@ -3,6 +3,7 @@ package us.noop.fd;
 import java.io.File;
 
 import us.noop.fd.data.BigData;
+import us.noop.fd.pages.GiveawayCreationPage;
 import us.noop.fd.pages.GiveawayListPage;
 import us.noop.server.Server;
 import us.noop.server.ServerSetup;
@@ -29,6 +30,7 @@ public class FoodDropServerSetup implements ServerSetup {
 		s.addPage(new StaticImagePage("/FoodDropLogoSmall.png", new File("web/FoodDropLogoSmall.png"), "image/png"));
 		BigData b = new BigData(new File("files/"));
 		s.addPage(new GiveawayListPage(b));
+		s.addPage(new GiveawayCreationPage(b));
 	}
 
 }
