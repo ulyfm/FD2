@@ -1,35 +1,46 @@
 #wrapper{
 	position: relative;
 }
-#overmap {
+#overmap, #hiddencontent {
 	position: absolute;
 	margin: 0px;
 	top: 0px;
 	left: 0px;
 	width: 20%;
 	height: 100%;
-	z-index: 99;
 }
+
 #hiddencontent {
 	width: 100%;
-	height: 94%;
 	min-width: 200px;
-	margin: 0px;
-	padding: 5px;
 	background-color: #ecf0f1;
-	border: 2px solid white;
+	/*border: 2px solid white;*/
 	color: black;
 }
-#toggle {
-	background-color: #e74c3c;
-	border: 2px solid #c0392b;
+#toggle, #toggle2 {
 	color: black;
 	padding: 2px;
 	margin: 0;
+	z-index: 99;
 	text-decoration: none;
+}
+#toggle {
+	border: 2px solid #c0392b;
+	background-color: #e74c3c;
+	float: right;
+}
+#toggle2 {
+	border: 2px solid #27ae60;
+	background-color: #2ecc71;
+	float: left;
 }
 #fdlogo {
 	width: 40%;
+}
+#subcont {
+	padding: 5px;
+	border: 2px solid white;
+	/*height: ???*/
 }
 .ebutton {
 	background-color: #2ecc71;

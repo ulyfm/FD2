@@ -95,14 +95,10 @@ function locError(){
 function toggleOverlay(){
   if(document.getElementById('hiddencontent').style.display === "none"){
     document.getElementById('hiddencontent').style.display = "block";
-    document.getElementById('toggle').innerHTML = "close";
-    document.getElementById('toggle').style.backgroundColor = "#e74c3c";
-    document.getElementById('toggle').style.border = "2px solid #c0392b";
+    //document.getElementById('toggle').innerHTML = "close";
   }else{
     document.getElementById('hiddencontent').style.display = "none";
-    document.getElementById('toggle').innerHTML = "open";
-    document.getElementById('toggle').style.backgroundColor = "#2ecc71";
-    document.getElementById('toggle').style.border = "2px solid #27ae60";
+    //document.getElementById('toggle').innerHTML = "open";
   }
 }
 function enterLocation(){

@@ -13,21 +13,24 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiiEvAp5WF0wnrm6Q8Zp5tDuyU8Qv96w8&callback=initMap">
     	</script>
     	<div id="overmap">
-    		<a id="toggle" href="javascript:toggleOverlay();">close</a>
+        <a id="toggle2" href="javascript:toggleOverlay();">Open</a>
     		<div id="hiddencontent">
-    			<img id="fdlogo" src="FoodDropLogoSmall.png">
-    			<p>FoodDrop lets people share food.</p>
-    			<input id="check" type="checkbox" name="foodbank"> I represent a food bank.
-    			<br>
-    			<br>
-    			<a id="enterloc" class="ebutton" href="javascript: enterLocation();">Enter My Location</a>
-    			<div id="hiddenfields">
-    				<input id="address" placeholder="Address">
-    				<a href="javascript: submitAddress();">Search</a>
-    			</div>
-    			<br>
-    			<br>
-    			<a id="autoloc" class="ebutton" href="javascript: getLocation();">Automatically Detect</a>
+            	<a id="toggle" href="javascript:toggleOverlay();">Close</a>
+                <div id="subcont">
+    				<img id="fdlogo" src="FoodDropLogoSmall.png">
+    				<p>FoodDrop lets people share food.</p>
+    				<input id="check" type="checkbox" name="foodbank"> I represent a food bank.
+    				<br>
+    				<br>
+    				<a id="enterloc" class="ebutton" href="javascript: enterLocation();">Enter My Location</a>
+    				<div id="hiddenfields">
+    					<input id="address" placeholder="Address">
+    					<a href="javascript: submitAddress();">Search</a>
+    				</div>
+    				<br>
+    				<br>
+    				<a id="autoloc" class="ebutton" href="javascript: getLocation();">Automatically Detect</a>
+                </div>
     		</div>
     	</div>
 </body>
