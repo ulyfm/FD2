@@ -64,7 +64,7 @@ function getJSON(url, callback) {
       if (status == 200) {
         callback(xhr.responseText);
       } else {
-        alert("error getting data: " + status);
+        callback("zero results");
       }
     };
     xhr.open("GET", url, true);
@@ -92,7 +92,8 @@ function submitAddress(){
 				res = results;
 			}
 		} else {
-			alert('Invalid address request: ' + status);
+			var box = document.getElementById('resultsdisp');
+			box.innerHTML = "no results";
 		}
 	});
 }
