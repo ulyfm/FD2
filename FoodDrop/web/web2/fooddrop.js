@@ -106,7 +106,7 @@ function selectAddr(lat, lng, addr){
 	document.getElementById('cloc').style.display = 'block';
 	sl();
 }
-function toggleSearch(){
+function enableSearch(){
 	document.getElementById('resultsdisp').innerHTML = '';
 	document.getElementById('address').value = '';
 	document.getElementById('search').style.display = 'block';
@@ -114,4 +114,5 @@ function toggleSearch(){
 	a.innerHTML = '';
 	a.style.display = 'none';
 	document.getElementById('cloc').style.display = 'none';
+	document.getElementById('address').focus();
 }
