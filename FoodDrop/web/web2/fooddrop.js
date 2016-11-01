@@ -155,3 +155,15 @@ function elogin(event){
 		toggleLogin();
 	}
 }
+function toggleDoverlay(){
+	if(document.getElementById('doverlay').style.display == "none" || document.getElementById('doverlay').style.display == ""){
+		document.getElementById('doverlay').style.display = 'block';
+	}else{
+		document.getElementById('doverlay').style.display = 'none';
+	}
+}
+function edoverlay(event){
+	if(event.target === document.getElementById('doverlay')){
+		toggleDoverlay();
+	}
+}

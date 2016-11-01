@@ -33,8 +33,14 @@
 						<h5 id="currentlocation"></h5>
 						<a id="cloc" href="javascript:enableSearch();">Change Location</a>
 						<hr />
+						<h4>Nearby Drops</h4>
+						<div id="dropresults">
+							no results.
+						</div>
 					</div>
 					<div id="bottom">
+						<hr />
+						<a href="javascript: toggleDoverlay();" id="newdrop" class="login">Create Drop</a>
 						<div id="links">
 							<a href="javascript: toggleLogin();" class="login">Food Bank Login</a>
 						</div>
@@ -43,7 +49,7 @@
 			</div>
 			<div id="foverlay" onclick="elogin(event);">
 				<div id="flogin">
-					<a href="javascript: toggleLogin();" class="login" id="closewin">Close</a>
+					<a href="javascript: toggleLogin();" class="login, closewin">Close</a>
 					<h2 id="flogintitle">Food Bank Login</h2>
 					<form onsubmit="alert('login attempt'); return false;" id="floginform">
 						<input type="text" name="username" id="fusername" placeholder="Username">
@@ -54,6 +60,16 @@
 					</form>
 					<br>
 					<p>To prevent abuse, manual verification is required for food bank registration. <a href="email: admin@fuckyou.org">Email</a> for assistance.</p>
+				</div>
+			</div>
+			<div id="doverlay" onclick="edoverlay(event);">
+				<div id="dsetup">
+					<a href="javascript: toggleDoverlay();" class="login, closewin">Close</a>
+					<h2 id="dtitle">Create Giveaway</h2>
+					<form onsubmit="alert('giveaway setup attempt'); return false;" id="dform">
+						
+						<input type="submit" class="login" value="Create">
+					</form>
 				</div>
 			</div>
 		</section>
