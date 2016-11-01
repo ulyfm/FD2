@@ -44,6 +44,7 @@ public class GiveawayListPage implements Page {
 			rs.append(",\"lng\": ");
 			rs.append(g.getDonator().getLongitude());
 			rs.append(",\"desc\": \"" + generateDesc(g));
+			rs.append("\",\"name\": \"" + g.getDonator().getName());
 			rs.append("\"}");
 		}
 		rs.append("]}");

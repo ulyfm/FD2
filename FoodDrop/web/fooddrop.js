@@ -74,7 +74,7 @@ function getJSON(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.timeout = 5000;
 	xhr.ontimeout = function(){
-		alert("Search timed out");
+		console.log("Search timed out");
     }
     xhr.onload = function() {
       var status = xhr.status;
@@ -182,4 +182,8 @@ function addMarker(position, map, desc){
       });
       lastwindow.open(map, marker);
     });
+}
+
+function updateDisp(){
+	
 }
