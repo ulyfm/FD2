@@ -1,11 +1,15 @@
 package us.noop.fd.pages;
 
-import us.noop.fd.Start;
 import us.noop.fd.data.BigData;
 import us.noop.server.pages.Page;
 import us.noop.server.pages.Page404;
 import us.noop.server.response.RequestData;
 
+/**
+ * 
+ * @author Ulysses
+ *
+ */
 public class GiveawayCreationPage implements Page {
 
 	private BigData data;
@@ -14,13 +18,15 @@ public class GiveawayCreationPage implements Page {
 		this.data = data;
 	}
 	
+	/**
+	 *  /creategiveaway?visibility&lat&lng&
+	 */
 	@Override
 	public byte[] getResponse(RequestData req) {
 		String input = req.getAddress();
 		input = input.substring(input.indexOf("?") + 1);
-		String[] spl = input.split("&");
-		String key = req.getData();
-		Start.getInstance().getLogger().info("Thing r: " + key);
+		
+		
 		return new Page404().getResponse(req);
 	}
 

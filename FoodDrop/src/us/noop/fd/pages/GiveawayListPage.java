@@ -6,6 +6,7 @@ import com.waataja.fooddrop.FoodItem;
 import com.waataja.fooddrop.Giveaway;
 
 import us.noop.fd.data.BigData;
+import us.noop.fd.data.TemporaryData;
 import us.noop.server.pages.Page;
 import us.noop.server.response.RequestData;
 import us.noop.server.response.ResponseManager;
@@ -30,13 +31,13 @@ public class GiveawayListPage implements Page {
 		input = input.substring(input.indexOf("?") + 1);
 		String[] spl = input.split("&");
 		int type = Integer.parseInt(spl[0]);
-		int usert = Integer.parseInt(spl[1]);
+		String what = spl[1];
 		double lat = Double.parseDouble(spl[2]);
 		double lng = Double.parseDouble(spl[3]);
 		
 		StringBuilder rs = new StringBuilder();
 		rs.append("{\"locations\": [");
-		ArrayList<Giveaway> giveaways = data.getGiveaways();
+		ArrayList<Giveaway> giveaways = TemporaryData.nearby(lat, lng, data.getGiveaways());
 		for(Giveaway g : giveaways){
 			rs.append("{\"lat\":");
 			rs.append(g.getDonator().getLatitude());

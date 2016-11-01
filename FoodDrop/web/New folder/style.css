@@ -1,0 +1,66 @@
+#wrapper{
+	position: relative;
+}
+#overmap, #hiddencontent {
+	position: absolute;
+	margin: 0px;
+	top: 0px;
+	left: 0px;
+	width: 20%;
+	height: 100%;
+}
+
+#hiddencontent {
+	width: 100%;
+	min-width: 200px;
+	background-color: #ecf0f1;
+	/*border: 2px solid white;*/
+	color: black;
+}
+#toggle, #toggle2 {
+	color: black;
+	padding: 2px;
+	margin: 0;
+	z-index: 99;
+	text-decoration: none;
+}
+#toggle {
+	border: 2px solid #c0392b;
+	background-color: #e74c3c;
+	float: right;
+}
+#toggle2 {
+	border: 2px solid #27ae60;
+	background-color: #2ecc71;
+	float: left;
+}
+#fdlogo {
+	width: 40%;
+}
+#subcont {
+	padding: 5px;
+	border: 2px solid white;
+	/*height: ???*/
+}
+.ebutton {
+	background-color: #2ecc71;
+	border: 2px solid #27ae60;
+	padding: 2px;
+	text-decoration: none;
+	font-size: 100%;
+	color: black;
+}
+.ebutton:active {
+	background-color: #27ae90;
+}
+#hiddenfields {
+	display: none;
+
+}
+html, body, #map {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Open Sans', sans-serif;
+}
