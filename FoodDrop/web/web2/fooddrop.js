@@ -1,5 +1,7 @@
 var map;
-var pos = {lat: 0, lng: 0};
+var loc = {lat: 0, lng: 0};
+var lkey = document.cookie;
+var hkey = document.cookie.split(";")[0].substring(2); /* Cookie: u=login key;expires=... */
 
 if(navigator.geolocation){
 	navigator.geolocation.getCurrentPosition(setLocation, locError);
@@ -7,6 +9,11 @@ if(navigator.geolocation){
 	
 }
 
+function updateCookie(fullstring){
+	document.cookie = fullstring;
+	lkey = fullstring;
+	hkey = fullstring.split(";")[0].substring(2);
+}
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -22,6 +29,16 @@ function initMap() {
 
 function setLocation(position){
 	loc = {lat: position.coords.latitude, lng: position.coords.longitude};
+	geocoder.geocode({'location': loc}, function(results, status) {
+          if (status === 'OK') {
+            
+			res = results;
+            selectAddr(loc.lat, loc.lng, 0);
+            
+          } else {
+            
+          }
+        });
 	sl();
 }
 
@@ -46,7 +63,7 @@ function sl(){
     });
     lastwindow.open(map, personalloc);
   });
-  getJSON("/getposition?1&" + getType() + "&" + loc.lat + "&" + loc.lng, updateMarkers);
+  /*getJSON("/getposition?type=1&key=" + hkey + "&lat=" + loc.lat + "&lng=" + loc.lng, updateMarkers);*/
 }
 
 function locError(){
@@ -78,8 +95,9 @@ function submitAddress(){
 	document.getElementById('address').blur();
 	geocoder.geocode({'address': document.getElementById('address').value}, function(results, status) {
 		if (status === 'OK') {
-			if(results.length == 0){
-				loc = {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()};
+			if(results.length == 1){
+				res = results;
+				selectAddr(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 0);
 				sl();
 			}else{
 				/* TODO display all results */
@@ -116,4 +134,24 @@ function enableSearch(){
 	a.style.display = 'none';
 	document.getElementById('cloc').style.display = 'none';
 	document.getElementById('address').focus();
+}
+
+function updateMarkers(data){
+  var list = JSON.parse(data).locations;
+  for(var i = 0; i < list.length; ++i){
+    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].desc);
+  }
+}
+
+function toggleLogin(){
+	if(document.getElementById('foverlay').style.display == "none" || document.getElementById('foverlay').style.display == ""){
+		document.getElementById('foverlay').style.display = 'block';
+	}else{
+		document.getElementById('foverlay').style.display = 'none';
+	}
+}
+function elogin(event){
+	if(event.target === document.getElementById('foverlay')){
+		toggleLogin();
+	}
 }

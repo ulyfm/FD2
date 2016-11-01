@@ -42,7 +42,7 @@ h1 {
 	border: 2px solid #27ae60;
 	padding: 2px;
 	white-space: nowrap;
-	margin-bottom: 5px;
+	margin: 5px;
 	font-size: 10pt;
 	float: left;
 }
@@ -61,4 +61,49 @@ h1 {
 }
 #cloc {
 	display: none;
+}
+#foverlay {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: rgba(49, 49, 49, 0.8);
+	overflow: auto;
+	display: none;
+}
+#flogin {
+	position: absolute;
+	left: 50%;
+	top: 17%;
+	width: 40%;
+	height: 30%;
+	background-color: rgba(236, 240, 241, 1.0);
+	margin-left: -20%;
+	min-width: 400px;
+	min-height: 300px;
+	border-radius: 5px;
+	padding: 5px;
+}
+h1, h2, h3 {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+#fusername, #fpassword {
+	width: 80%;
+	height: 20px;
+	margin: 3px;
+}
+h5 {
+	margin: 5px;
+}
+#closewin {
+	position: absolute;
+	margin-left: 90%;
+	margin-top: 0;
+	background-color: #e74c3c;
+	border: 2px solid #c0392b;
+}
+#closewin:active {
+	background-color: #c0392b;
 }
