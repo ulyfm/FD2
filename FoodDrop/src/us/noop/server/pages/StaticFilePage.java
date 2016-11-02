@@ -35,6 +35,12 @@ public class StaticFilePage implements Page {
 				fs.read(data);
 				response = data;
 				fs.close();
+				byte[] header = ("HTTP/1.1 200 OK\r\nContent-Length: " + (response.length) + "\r\nConnection: Closed\r\nContent-Disposition: inline; filename=\"" + f.getName() + "\"\r\nContent-Type: " + 
+						mimetype + "\r\n\r\n").getBytes();
+				byte[] nr = new byte[response.length + header.length];
+				System.arraycopy(header, 0, nr, 0, header.length);//TODO This shit is fucking stupid
+				System.arraycopy(response, 0, nr, header.length, response.length);
+				response = nr;
 			} catch (IOException e) {
 				Start.getInstance().getLogger().log(Level.HIGH, "Failed to read file for: " + f.getName() + ": \n" + e.getStackTrace());
 			}

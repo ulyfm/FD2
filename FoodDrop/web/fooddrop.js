@@ -137,9 +137,12 @@ function enableSearch(){
 }
 
 function updateMarkers(data){
+	console.log(data);
+	document.getElementById('dropresults').innerHTML = "";
   var list = JSON.parse(data).locations;
   for(var i = 0; i < list.length; ++i){
-    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].desc);
+    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].html);
+	document.getElementById('dropresults').innerHTML += list[i].html.split("<br><br>")[0] + "<hr />";
   }
 }
 
@@ -186,4 +189,21 @@ function addMarker(position, map, desc){
 
 function updateDisp(){
 	
+}
+
+function submitGiveaway(){
+	var address = document.getElementById('gaddress').value;
+	var name = document.getElementById('gname').value;
+	var date = document.getElementById('gdate').value;
+	var inst = document.getElementById('ginst').value;
+	var fbcheck = document.getElementById('gfbcheck').checked;
+	var desc = document.getElementById('inputi').value;
+	var send = address + "\n" + name + "\n" + date + "\n" + loc.lat + "\n" + loc.lng + "\n" + inst + "\n" + fbcheck + "\n" + desc;
+	var oReq = new XMLHttpRequest();
+	oReq.open("POST", "/submitgiveaway", true);
+	oReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	oReq.send(send);
+	oReq.close();
+	toggleDoverlay();
+	return false;
 }

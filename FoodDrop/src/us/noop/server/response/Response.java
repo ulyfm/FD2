@@ -53,6 +53,7 @@ public class Response implements Runnable {
 			Start.getInstance().getLogger().info("R:" + id + " completed.");
 		}catch(Exception e){
 			Start.getInstance().getLogger().log(Level.HIGH, "Error in response id " + id);
+			e.printStackTrace();
 		}
 	}
 }

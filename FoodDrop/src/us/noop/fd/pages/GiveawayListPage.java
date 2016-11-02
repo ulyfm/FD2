@@ -27,6 +27,7 @@ public class GiveawayListPage implements Page {
 	@SuppressWarnings("unused")
 	@Override
 	public byte[] getResponse(RequestData req) {
+		System.out.println(data.getGiveaways().size());
 		String input = req.getAddress();
 		input = input.substring(input.indexOf("?") + 1);
 		String[] spl = input.split("&");
@@ -38,14 +39,19 @@ public class GiveawayListPage implements Page {
 		StringBuilder rs = new StringBuilder();
 		rs.append("{\"locations\": [");
 		ArrayList<Giveaway> giveaways = TemporaryData.nearby(lat, lng, data.getGiveaways());
+		int i = 1;
 		for(Giveaway g : giveaways){
 			rs.append("{\"lat\":");
 			rs.append(g.getDonator().getLatitude());
 			rs.append(",\"lng\": ");
 			rs.append(g.getDonator().getLongitude());
-			rs.append(",\"desc\": \"" + generateDesc(g));
+			rs.append(",\"desc\": \"" + g.getAvailability());
 			rs.append("\",\"name\": \"" + g.getDonator().getName());
+			rs.append("\",\"html\": \"" + generateDesc(g));
 			rs.append("\"}");
+			if(i < giveaways.size())
+				rs.append(",");
+			i++;
 		}
 		rs.append("]}");
 		return ResponseManager.generateHeader(200, "OK", rs.toString(), "text/plain").getBytes();
@@ -58,12 +64,7 @@ public class GiveawayListPage implements Page {
 		sob.append("</h3>");
 		sob.append(g.getDonator().getAddress());
 		sob.append("<br><br>");
-		for(FoodItem f : g.getItems()){
-			sob.append(f.getAmount());
-			sob.append(" ");
-			sob.append(f.getName());
-			sob.append("<br>");
-		}
+		sob.append(g.getAvailability());
 		
 		return sob.toString();
 	}

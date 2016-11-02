@@ -54,7 +54,7 @@ public class BigData {
 			ArrayList<Giveaway> gs = new ArrayList<Giveaway>();
 			File s = new File(dataDir, "save");
 			donators = new HashMap<Integer, ArrayList<FoodDonator>>();
-			if(!s.exists()){
+			if(!s.exists() || s.length() == 0){
 				giveaways = gs;
 				return;
 			}
@@ -68,7 +68,7 @@ public class BigData {
 				}
 			}
 			giveaways = gs;
-		}catch(IOException | ParseException e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}

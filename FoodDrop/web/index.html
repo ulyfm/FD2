@@ -66,8 +66,17 @@
 				<div id="dsetup">
 					<a href="javascript: toggleDoverlay();" class="login, closewin">Close</a>
 					<h2 id="dtitle">Create Giveaway</h2>
-					<form onsubmit="alert('giveaway setup attempt'); return false;" id="dform">
-						
+					<form onsubmit="submitGiveaway(); return false;" id="dform">
+						<input type="text" id="gaddress" class="formf" name="Address" placeholder="Address">
+						<input type="text" id="gname" class="formf" name="Business name" placeholder="Business Name (opt.)">
+						<input type="datetime-local" id="gdate" name="Time" min="2016-11-1" max="2020-1-1">
+						<input type="text" class="formf" id="ginst" name="LocDesc" placeholder="Special pickup instructions">
+						<br>
+						<input type="checkbox" name="FBAllowed" id="gfbcheck"> <span id="onlyb">Only allow food banks to pick up.</span>
+						<hr />
+						<h5>Items</h5>
+						<textarea id="inputi" rows="10" cols="40">Item descriptions (e.g. 20 Potatoes, 15 Yams)</textarea>
+						<hr />
 						<input type="submit" class="login" value="Create">
 					</form>
 				</div>
