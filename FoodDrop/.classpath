@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="E:/FoodDrop/FD_lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="E:/FoodDrop/FD_lib/sqlite-jdbc-3.14.2.1.jar"/>
+	<classpathentry kind="lib" path="H:/FoodDrop/FD2/FD_lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="H:/FoodDrop/FD2/FD_lib/sqlite-jdbc-3.14.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

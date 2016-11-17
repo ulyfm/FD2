@@ -58,7 +58,7 @@
 						<br>
 						<input type="submit" class="login" value="Log in">
 					</form>
-					<br>
+					<br>disp
 					<p>To prevent abuse, manual verification is required for food bank registration. <a href="email: admin@fuckyou.org">Email</a> for assistance.</p>
 				</div>
 			</div>
@@ -67,7 +67,9 @@
 					<a href="javascript: toggleDoverlay();" class="login, closewin">Close</a>
 					<h2 id="dtitle">Create Giveaway</h2>
 					<form onsubmit="submitGiveaway(); return false;" id="dform">
-						<input type="text" id="gaddress" class="formf" name="Address" placeholder="Address">
+						<!-- <input type="text" id="gaddress" class="formf" name="Address" placeholder="Address"> -->
+						<span id="addrinfo">The drop will be at the address currently selected. Please verify that it is correct.</span>
+						<!-- <input type="checkbox" id="useloca" name="useloc"><span>Use current location</span> -->
 						<input type="text" id="gname" class="formf" name="Business name" placeholder="Business Name (opt.)">
 						<input type="datetime-local" id="gdate" name="Time" min="2016-11-1" max="2020-1-1">
 						<input type="text" class="formf" id="ginst" name="LocDesc" placeholder="Special pickup instructions">

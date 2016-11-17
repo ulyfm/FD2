@@ -137,6 +137,6 @@ hr {
 	width: 80%;
 	height: 20%;
 }
-#gfbcheck, #links {
-	display: none;
+#addrinfo {
+	font-size: 12px;
 }

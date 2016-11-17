@@ -115,12 +115,14 @@ function submitAddress(){
 		}
 	});
 }
+var currentAddr = "";
 
 function selectAddr(lat, lng, addr){
 	loc = {lat: lat, lng: lng};
 	document.getElementById('search').style.display = 'none';
 	var a = document.getElementById('currentlocation');
 	a.innerHTML = "Current Location: <br>" + res[addr].formatted_address;
+	currentAddr = res[addr].formatted_address;
 	a.style.display = 'block';
 	document.getElementById('cloc').style.display = 'block';
 	sl();
@@ -141,8 +143,8 @@ function updateMarkers(data){
 	document.getElementById('dropresults').innerHTML = "";
   var list = JSON.parse(data).locations;
   for(var i = 0; i < list.length; ++i){
-    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].html);
-	document.getElementById('dropresults').innerHTML += list[i].html.split("<br><br>")[0] + "<hr />";
+    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].html);//TODO make markers selectable
+	document.getElementById('dropresults').innerHTML += "<a href='javascript:selectMarker(" + m + ")'></a>"list[i].desc + "<hr />";
   }
 }
 
@@ -192,7 +194,11 @@ function updateDisp(){
 }
 
 function submitGiveaway(){
-	var address = document.getElementById('gaddress').value;
+	/*var address = document.getElementById('gaddress').value;*/
+	if(currentAddr === ""){
+		alert("You haven't entered in an address.");
+	}
+	var address = currentAddr;
 	var name = document.getElementById('gname').value;
 	var date = document.getElementById('gdate').value;
 	var inst = document.getElementById('ginst').value;
