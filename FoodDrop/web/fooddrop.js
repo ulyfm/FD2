@@ -143,9 +143,13 @@ function updateMarkers(data){
 	document.getElementById('dropresults').innerHTML = "";
   var list = JSON.parse(data).locations;
   for(var i = 0; i < list.length; ++i){
-    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].html);//TODO make markers selectable
-	document.getElementById('dropresults').innerHTML += "<a href='javascript:selectMarker(" + m + ")'></a>"list[i].desc + "<hr />";
+    addMarker({lat: list[i].lat, lng: list[i].lng}, map, list[i].html);
+	document.getElementById('dropresults').innerHTML += "<a href='javascript:selectMarker(" + (markerindex - 1) + ")'>" + list[i].name + "</a><br>" + list[i].desc + "<hr />";
   }
+}
+
+function selectMarker(index){
+	map.setCenter(markers[index]);
 }
 
 function toggleLogin(){
@@ -173,6 +177,8 @@ function edoverlay(event){
 	}
 }
 
+var markerindex = 0;
+var markers = [];
 function addMarker(position, map, desc){
   var marker = new google.maps.Marker({
       position: position,
@@ -187,8 +193,10 @@ function addMarker(position, map, desc){
       });
       lastwindow.open(map, marker);
     });
+    markers.push(position);
+    markerindex += 1;
 }
-
+var markerindex = 0;
 function updateDisp(){
 	
 }
