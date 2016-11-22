@@ -16,7 +16,7 @@ import us.noop.server.log.Level;
 public class Response implements Runnable {
 	
 	private OutputStream out;
-	private Scanner in;
+	private BufferedReader in;
 	private int id;
 	private String ip;
 	
@@ -27,8 +27,8 @@ public class Response implements Runnable {
 	 */
 	public Response(String ip, OutputStream out, BufferedReader in){
 		this.out = out;
-		this.in = new Scanner(in);
-		this.in.useDelimiter("\r\n\r\n");
+		this.in = in;
+		
 		this.ip = ip;
 		id = Start.getInstance().getResponseManager().nextId();
 	}
@@ -39,6 +39,9 @@ public class Response implements Runnable {
 	@Override
 	public void run() {
 		try{
+			System.out.println("R: " + id + " initialized from " + ip);
+			Scanner in = new Scanner(this.in);
+			in.useDelimiter("\r\n\r\n");
 			String header = in.next();
 			String[] fields = header.split("\r\n");
 			RequestData get = new RequestData(ip, fields);
