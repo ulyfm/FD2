@@ -1,55 +1,142 @@
-#wrapper{
-	position: relative;
-}
-#overmap {
-	position: absolute;
-	margin: 0px;
-	top: 0px;
-	left: 0px;
-	width: 20%;
-	height: 100%;
-	z-index: 99;
-}
-#hiddencontent {
+html, body, section {
 	width: 100%;
-	height: 94%;
-	min-width: 200px;
-	margin: 0px;
-	padding: 5px;
-	background-color: #ecf0f1;
-	border: 2px solid white;
-	color: black;
-}
-#toggle {
-	background-color: #e74c3c;
-	border: 2px solid #c0392b;
-	color: black;
-	padding: 2px;
+	height: 100%;
 	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+.col {
+	background-color: #ecf0f1;
+	height: 100%;
+	width: 100%;
+}
+#mapside {
+	width: 75%;
+	margin-left: 25%;
+	background: #a3ccff;
+	float: right;
+	position: absolute;
+}
+#uiside {
+	width: 25%;
+	background: #ecf0f1;
+}
+#map {
+	width: 100%;
+	height: 100%;
+}
+#cont {
+	padding: 5px;
+	width: 100%;
+}
+h1 {
+	margin: 0;
+}
+#bottom {
+	position: absolute;
+	width: 25%;
+	bottom: 0;
+}
+.login {
 	text-decoration: none;
-}
-#fdlogo {
-	width: 40%;
-}
-.ebutton {
+	color: black;
 	background-color: #2ecc71;
 	border: 2px solid #27ae60;
 	padding: 2px;
+	white-space: nowrap;
+	margin: 5px;
+	font-size: 10pt;
+	float: left;
+}
+.login:active {
+	background-color: #27ae60;
+}
+.radish {
+	float: right;
+	height: 40px;
+}
+#header {
+	width: 100%;
+}
+#currentlocation{
+	display: none;
+}
+#cloc {
+	display: none;
+}
+#foverlay, #doverlay {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: rgba(49, 49, 49, 0.8);
+	overflow: auto;
+	display: none;
+}
+#flogin, #dsetup {
+	position: absolute;
+	left: 50%;
+	top: 17%;
+	width: 40%;
+	height: 30%;
+	background-color: rgba(236, 240, 241, 1.0);
+	margin-left: -20%;
+	min-width: 400px;
+	min-height: 300px;
+	border-radius: 5px;
+	padding: 5px;
+}
+#dsetup {
+	height: auto;
+}
+h1, h2, h3 {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+#fusername, #fpassword {
+	width: 80%;
+	height: 20px;
+	margin: 3px;
+}
+h5 {
+	margin: 5px;
+}
+.closewin {
+	position: absolute;
+	margin-left: 90%;
+	margin-top: 0;
+	background-color: #e74c3c;
+	border: 2px solid #c0392b;
 	text-decoration: none;
-	font-size: 100%;
 	color: black;
 }
-.ebutton:active {
-	background-color: #27ae90;
+.closewin:active {
+	background-color: #c0392b;
 }
-#hiddenfields {
-	display: none;
-
+#newdrop {
+	height: 30px;
+	width: 80%;
+	font-size: 16pt;
+	text-align: center;
 }
-html, body, #map {
-	height: 100%;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Open Sans', sans-serif;
+hr {
+	width: 95%;
+	margin-left: 0px;
+}
+#iteminp {
+	height: 16px;
+	margin: 0;
+	padding: 0;
+	width: 40%;
+	resize: none;
+}
+#onlyb {
+	font-size: 12px;
+}
+#itemi{
+	width: 80%;
+	height: 20%;
+}
+#addrinfo {
+	font-size: 12px;
 }

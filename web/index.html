@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>FoodDrop</title>
-	<link rel='stylesheet' type="text/css" href="style.css">
-	<script src="fooddrop.js" type="text/javascript"></script>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-</head>
-<body>
-		<div id="map"></div>
-		<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiiEvAp5WF0wnrm6Q8Zp5tDuyU8Qv96w8&callback=initMap">
-    	</script>
-    	<div id="overmap">
-    		<a id="toggle" href="javascript:toggleOverlay();">close</a>
-    		<div id="hiddencontent">
-    			<img id="fdlogo" src="FoodDropLogoSmall.png">
-    			<p>FoodDrop lets people share food.</p>
-    			<input id="check" type="checkbox" name="foodbank"> I represent a food bank.
-    			<br>
-    			<br>
-    			<a id="enterloc" class="ebutton" href="javascript: enterLocation();">Enter My Location</a>
-    			<div id="hiddenfields">
-    				<input id="address" placeholder="Address">
-    				<a href="javascript: submitAddress();">Search</a>
-    			</div>
-    			<br>
-    			<br>
-    			<a id="autoloc" class="ebutton" href="javascript: getLocation();">Automatically Detect</a>
-    		</div>
-    	</div>
-</body>
+	<head>
+		<title>FoodDrop</title>
+		<link rel='stylesheet' type="text/css" href="style.css">
+		<script src="fooddrop.js" type="text/javascript"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	</head>
+	<body>
+		<section>
+			<div id="mapside" class="col">
+				<div id="map"></div>
+				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiiEvAp5WF0wnrm6Q8Zp5tDuyU8Qv96w8&callback=initMap"></script>
+			</div>
+			<div id="uiside" class="col">
+				<div id="cont">
+					<div id="header">
+						<img src="radish.svg" class="radish" alt="logo">
+						<h1>FoodDrop</h1>
+					</div>
+					<br>
+					<div id="top">
+						<div id="search">
+							<form onsubmit="submitAddress(); return false;">
+								<input type="text" name="addr" id="address" placeholder="Enter Custom Address">
+								<br>
+								<input type="submit" class="login" value="Search">
+							</form>
+							<br>
+							<br>
+							<div id="resultsdisp"></div>
+						</div>
+						<h5 id="currentlocation"></h5>
+						<a id="cloc" href="javascript:enableSearch();">Change Location</a>
+						<hr />
+						<h4>Nearby Drops</h4>
+						<div id="dropresults">
+							no results.
+						</div>
+					</div>
+					<div id="bottom">
+						<hr />
+						<a href="javascript: toggleDoverlay();" id="newdrop" class="login">Create Drop</a>
+						<div id="links">
+							<a href="javascript: toggleLogin();" class="login">Food Bank Login</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="foverlay" onclick="elogin(event);">
+				<div id="flogin">
+					<a href="javascript: toggleLogin();" class="login, closewin">Close</a>
+					<h2 id="flogintitle">Food Bank Login</h2>
+					<form onsubmit="alert('login attempt'); return false;" id="floginform">
+						<input type="text" name="username" id="fusername" placeholder="Username">
+						<br>
+						<input type="password" name="password" id="fpassword" placeholder="Password">
+						<br>
+						<input type="submit" class="login" value="Log in">
+					</form>
+					<br>
+					<p>To prevent abuse, manual verification is required for food bank registration. <a href="email: admin@fuckyou.org">Email</a> for assistance.</p>
+				</div>
+			</div>
+			<div id="doverlay" onclick="edoverlay(event);">
+				<div id="dsetup">
+					<a href="javascript: toggleDoverlay();" class="login, closewin">Close</a>
+					<h2 id="dtitle">Create Giveaway</h2>
+					<form onsubmit="submitGiveaway(); return false;" id="dform">
+						<!-- <input type="text" id="gaddress" class="formf" name="Address" placeholder="Address"> -->
+						<span id="addrinfo">The drop will be at the address currently selected. Please verify that it is correct.</span>
+						<!-- <input type="checkbox" id="useloca" name="useloc"><span>Use current location</span> -->
+						<input type="text" id="gname" class="formf" name="Business name" placeholder="Business Name (opt.)">
+						<input type="datetime-local" id="gdate" name="Time" min="2016-11-1" max="2020-1-1">
+						<input type="text" class="formf" id="ginst" name="LocDesc" placeholder="Special pickup instructions">
+						<br>
+						<input type="checkbox" name="FBAllowed" id="gfbcheck"> <span id="onlyb">Only allow food banks to pick up.</span>
+						<hr />
+						<h5>Items</h5>
+						<textarea id="inputi" rows="10" cols="40">Item descriptions (e.g. 20 Potatoes, 15 Yams)</textarea>
+						<hr />
+						<input type="submit" class="login" value="Create">
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
 </html>

@@ -42,8 +42,6 @@ public class Server implements Runnable {
 		instance.getLogger().info("Server probably started successfully.");
 	}
 	
-	int ct = 0;
-	
 	/**
 	 * Accepts clients and passes them on to new threads, which are stored in the ResponseManager
 	 */
@@ -53,10 +51,6 @@ public class Server implements Runnable {
 			try {
 				Socket client = sock.accept();
 				r.addResponse(new Response(client.getInetAddress().getHostAddress(), client.getOutputStream(), new BufferedReader(new InputStreamReader(client.getInputStream()))));
-				if(ct >= 10){
-					r.cleanResponders();
-					ct = 0;
-				}
 			} catch (IOException e) {
 				Start.getInstance().getLogger().log(Level.HIGH, "Problem creating client socket: \n" + e.getStackTrace());
 			}

@@ -33,13 +33,6 @@ public class ResponseThread extends Thread {
 	
 	@Override
 	public void run(){
-		while(!destroy){
-			if(r != null){
-				r.run();
-				r = null;
-				lastResponse = System.currentTimeMillis();
-				rm.renewResponse(this);
-			}
-		}
+		r.run();
 	}
 }
