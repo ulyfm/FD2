@@ -1,5 +1,10 @@
 #!/usr/bin/perl
 # ONLY TO BE USED WHEN MAVEN CANNOT BE INSTALLED
+
+#
+# THIS DOESN'T ACTUALLY WORK
+#
+
 # To be updated
 system "wget https://github.com/ulyfm/FD2/releases/download/0.3c/FD2.jar";
 system "mv FD.jar FoodDrop.jar";
