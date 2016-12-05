@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Jason
+ * @author Daniel
  *
  */
 public class LatGetter {
